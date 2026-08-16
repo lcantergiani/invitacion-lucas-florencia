@@ -85,7 +85,7 @@ export default function Hero() {
         {/* Nombres de los novios */}
         <motion.h1
           variants={item}
-          className="mt-5 flex flex-col items-center gap-1 text-lg leading-tight sm:text-xl"
+          className="mt-5 flex flex-col items-center gap-1 text-sm leading-tight sm:text-xl"
         >
           <span>{wedding.couple.groom}</span>
           <span>{wedding.couple.bride}</span>
@@ -94,7 +94,7 @@ export default function Hero() {
         {/* Texto de invitación */}
         <motion.p
           variants={item}
-          className="mt-8 max-w-xl text-xs leading-relaxed text-stone sm:text-sm"
+          className="mt-8 max-w-xl text-[0.6rem] leading-relaxed text-stone sm:text-xs"
         >
           Te invitamos a celebrar nuestro matrimonio con una ceremonia religiosa
           en Casa Olivos de Chacabuco, Colina y a una recepción en el mismo

@@ -8,8 +8,8 @@ export const wedding = {
   },
   // Padres de los novios (columna izquierda: novio · columna derecha: novia).
   parents: {
-    groom: ['Rodrigo Sandro Cantergiani Rabanal', 'Alejandra Angela Merello Díaz'],
-    bride: ['Christian Eduardo Peirano Novoa', 'María Soledad Caroca Baeza'],
+    groom: ['Rodrigo Cantergiani Rabanal', 'Alejandra Merello Díaz'],
+    bride: ['Christian Peirano Novoa', 'María Soledad Caroca Baeza'],
   },
   // Fecha y hora del evento (14 de noviembre, 17:00hs).
   // El año se toma automáticamente: si el 14/11 de este año ya pasó, usa el próximo.
