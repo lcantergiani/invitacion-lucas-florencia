@@ -82,7 +82,7 @@ export default function MusicPlayer({ src = '/cancion.mp3', volume = 0.6 }) {
         type="button"
         onClick={toggle}
         aria-label={playing ? 'Silenciar música' : 'Reproducir música'}
-        className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 bg-ivory/80 text-ink shadow-md backdrop-blur transition-colors hover:border-accent hover:text-accent"
+        className="fixed bottom-6 left-6 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 bg-ivory/80 text-ink shadow-md backdrop-blur transition-colors hover:border-accent hover:text-accent"
       >
         {playing ? (
           // Sonido activo (con ondas)
