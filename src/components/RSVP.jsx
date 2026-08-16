@@ -34,7 +34,7 @@ export default function RSVP() {
   return (
     <section id="rsvp" className="section-pad">
       <motion.div {...viewportReveal} className="mx-auto max-w-xl">
-        <SectionTitle eyebrow="Te esperamos" title="Confirmá tu asistencia" />
+        <SectionTitle eyebrow="Te esperamos" title="Confirma tu asistencia" />
 
         <AnimatePresence mode="wait">
           {sent ? (

@@ -22,14 +22,6 @@ export default function Contact() {
       <motion.div {...viewportReveal} className="mx-auto max-w-xl text-center">
         <SectionTitle eyebrow="¿Dudas?" title="Contáctanos" />
 
-        <motion.p
-          variants={fadeUp}
-          className="mx-auto max-w-md font-sans text-sm font-light leading-relaxed text-stone"
-        >
-          Si necesitas información adicional, contáctanos por WhatsApp y con
-          gusto te ayudamos.
-        </motion.p>
-
         <motion.a
           variants={fadeUp}
           href={WHATSAPP_URL}
@@ -38,7 +30,7 @@ export default function Contact() {
           whileHover={{ y: -3 }}
           whileTap={{ scale: 0.97 }}
           transition={{ duration: 0.3, ease }}
-          className="mt-8 inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 font-sans text-xs uppercase tracking-widest2 text-ivory transition-colors hover:bg-accent"
+          className="inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 font-sans text-xs uppercase tracking-widest2 text-ivory transition-colors hover:bg-accent"
         >
           <WhatsAppIcon />
           Escríbenos por WhatsApp

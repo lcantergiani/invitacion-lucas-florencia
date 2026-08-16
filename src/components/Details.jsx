@@ -44,12 +44,12 @@ export default function Details() {
     {
       icon: <GlassIcon />,
       title: 'Celebración',
-      lines: [venues.party.name, venues.party.time],
+      lines: ['Casa Olivos de Chacabuco'],
     },
     {
       icon: <DressIcon />,
       title: 'Dress code',
-      lines: [dressCode, 'Elegante · sobrio'],
+      lines: [dressCode],
     },
   ]
 
