@@ -43,7 +43,7 @@ export default function Hero() {
         transition={{ duration: 1.6, ease }}
       />
 
-      <div className="relative mx-auto w-full max-w-2xl overflow-hidden rounded-[1.25rem] bg-ivory px-6 py-14 shadow-[0_25px_70px_-30px_rgba(43,41,37,0.45)] ring-1 ring-ink/5 sm:px-12">
+      <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-[1.25rem] bg-ivory px-6 py-14 shadow-[0_25px_70px_-30px_rgba(43,41,37,0.45)] ring-1 ring-ink/5 sm:px-14">
         {/* Textura de papel (imagen) */}
         <div
           aria-hidden
@@ -54,91 +54,88 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 flex flex-col items-center"
+        className="relative z-10 flex w-full flex-col items-center text-center font-serif font-light uppercase tracking-[0.12em] text-ink"
       >
-        <motion.div variants={item} className="mb-5">
+        {/* Padres en las esquinas superiores */}
+        <motion.div
+          variants={item}
+          className="flex w-full items-start justify-between gap-6 text-[0.6rem] leading-relaxed tracking-[0.08em] sm:text-xs"
+        >
+          <div className="space-y-1 text-left">
+            {wedding.parents.groom.map((name) => (
+              <p key={name}>{name}</p>
+            ))}
+          </div>
+          <div className="space-y-1 text-right">
+            {wedding.parents.bride.map((name) => (
+              <p key={name}>{name}</p>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Capilla (un poco más abajo) */}
+        <motion.div variants={item} className="mt-12 sm:mt-14">
           <img
             src={`${import.meta.env.BASE_URL}capilla2.png`}
             alt="Capilla"
-            className="mx-auto w-48 sm:w-64"
+            className="mx-auto w-44 sm:w-56"
           />
         </motion.div>
 
-        <motion.p variants={item} className="eyebrow mb-6">
-          Junto a nuestros padres
-        </motion.p>
-
-        <motion.div
-          variants={item}
-          className="mb-8 flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:justify-center sm:gap-x-14"
-        >
-          <div className="space-y-1">
-            {wedding.parents.groom.map((name) => (
-              <p key={name} className="whitespace-nowrap font-serif text-sm font-light text-ink sm:text-base">
-                {name}
-              </p>
-            ))}
-          </div>
-          <div className="space-y-1">
-            {wedding.parents.bride.map((name) => (
-              <p key={name} className="whitespace-nowrap font-serif text-sm font-light text-ink sm:text-base">
-                {name}
-              </p>
-            ))}
-          </div>
-        </motion.div>
-
+        {/* Nombres de los novios */}
         <motion.h1
           variants={item}
-          className="flex flex-col items-center gap-1 font-serif text-xl font-light text-ink sm:text-2xl"
+          className="mt-5 flex flex-col items-center gap-1 text-lg leading-tight sm:text-xl"
         >
           <span>{wedding.couple.groom}</span>
-          <span className="text-accent">&amp;</span>
           <span>{wedding.couple.bride}</span>
         </motion.h1>
 
+        {/* Texto de invitación */}
         <motion.p
           variants={item}
-          className="mt-6 max-w-lg font-sans text-sm font-light leading-relaxed text-stone"
+          className="mt-8 max-w-xl text-xs leading-relaxed text-stone sm:text-sm"
         >
           Te invitamos a celebrar nuestro matrimonio con una ceremonia religiosa
           en Casa Olivos de Chacabuco, Colina y a una recepción en el mismo
           lugar.
         </motion.p>
 
+        {/* Fecha (misma tipografía) */}
         <motion.div variants={item} className="mt-8">
-          <div className="inline-block text-ink">
-            <p className="font-serif text-xl font-light">{month}</p>
+          <div className="inline-block tabular-nums lining-nums">
+            <p className="text-lg">{month}</p>
 
             <div className="mt-2 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
               <div className="flex flex-col items-center gap-1.5">
                 <span className="h-px w-12 bg-[#d8a7b0]" />
-                <span className="font-sans text-sm">{weekday}</span>
+                <span className="text-sm">{weekday}</span>
                 <span className="h-px w-12 bg-[#d8a7b0]" />
               </div>
 
-              <span className="text-center font-sans text-4xl font-light tabular-nums leading-none sm:text-5xl">
+              <span className="flex items-center justify-center text-center text-4xl leading-none sm:text-5xl">
                 {day}
               </span>
 
               <div className="flex flex-col items-center gap-1.5">
                 <span className="h-px w-12 bg-[#d8a7b0]" />
-                <span className="font-sans text-sm tabular-nums">{year}</span>
+                <span className="text-sm">{year}</span>
                 <span className="h-px w-12 bg-[#d8a7b0]" />
               </div>
             </div>
 
-            <p className="mt-2 font-sans text-sm">{time}</p>
+            <p className="mt-2 text-sm">{time}</p>
           </div>
         </motion.div>
 
+        {/* Botón */}
         <motion.a
           variants={item}
           href="#rsvp"
           whileHover={{ y: -3 }}
           whileTap={{ scale: 0.97 }}
           transition={{ duration: 0.3, ease }}
-          className="mt-10 rounded-full border border-ink/20 px-8 py-3 font-sans text-xs uppercase tracking-widest2 text-ink transition-colors hover:border-accent hover:text-accent"
+          className="mt-10 rounded-full border border-ink/20 px-8 py-3 text-xs tracking-[0.2em] transition-colors hover:border-accent hover:text-accent"
         >
           Confirmar asistencia
         </motion.a>
