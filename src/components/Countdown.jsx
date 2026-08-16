@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { wedding } from '../data/wedding'
 import { viewportReveal, fadeUp } from '../lib/motion'
+import { paperStyle } from '../lib/paper'
 
 function getRemaining(target) {
   const total = Math.max(0, target.getTime() - Date.now())
@@ -50,6 +51,7 @@ export default function Countdown() {
           {units.map((u) => (
             <div
               key={u.label}
+              style={paperStyle}
               className="flex flex-col items-center rounded-2xl bg-ivory/80 px-4 py-8 shadow-[0_1px_30px_-15px_rgba(43,41,37,0.25)]"
             >
               <span className="font-serif text-4xl font-light tabular-nums text-ink sm:text-5xl">

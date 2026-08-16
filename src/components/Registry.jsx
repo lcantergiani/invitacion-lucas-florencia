@@ -1,12 +1,12 @@
 import { motion } from 'motion/react'
 import { fadeUp, viewportReveal } from '../lib/motion'
+import { paperStyle } from '../lib/paper'
 import SectionTitle from './SectionTitle'
 
 const ease = [0.22, 1, 0.36, 1]
 
-// Reemplazá "#" por la URL real de la lista de novios cuando la tengas.
-const REGISTRY_URL = '#'
-const REGISTRY_CODE = '18019251-4'
+const REGISTRY_URL = 'https://www.noviosparis.cl/home'
+const REGISTRY_CODE = '6971016'
 
 function GiftIcon() {
   return (
@@ -26,16 +26,12 @@ export default function Registry() {
 
         <motion.div
           variants={fadeUp}
+          style={paperStyle}
           className="flex flex-col items-center rounded-2xl bg-ivory/80 px-8 py-12 text-center shadow-[0_1px_30px_-15px_rgba(43,41,37,0.25)]"
         >
           <span className="text-accent">
             <GiftIcon />
           </span>
-
-          <p className="mt-6 max-w-sm font-sans text-sm font-light leading-relaxed text-stone">
-            Tu presencia es nuestro mejor regalo. Si querés acompañarnos con un
-            detalle, dejamos disponible nuestra lista de novios.
-          </p>
 
           <motion.a
             href={REGISTRY_URL}

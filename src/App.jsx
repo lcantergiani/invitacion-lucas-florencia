@@ -1,8 +1,7 @@
-import Intro from './components/Intro'
+import Hero from './components/Hero'
 import Countdown from './components/Countdown'
 import Details from './components/Details'
 import Location from './components/Location'
-import Gallery from './components/Gallery'
 import Registry from './components/Registry'
 import RSVP from './components/RSVP'
 import Contact from './components/Contact'
@@ -13,11 +12,10 @@ export default function App() {
   return (
     <>
       <main className="overflow-x-clip">
-        <Intro />
-        <Countdown />
+        <Hero />
         <Details />
+        <Countdown />
         <Location />
-        <Gallery />
         <Registry />
         <RSVP />
         <Contact />

@@ -15,9 +15,7 @@ import { useEffect, useRef, useState } from 'react'
 export default function MusicPlayer({ src = '/cancion.mp3', volume = 0.6 }) {
   const audioRef = useRef(null)
   const [playing, setPlaying] = useState(false)
-  const unlockedRef = useRef(false)
   const startedRef = useRef(false)
-  const pendingRef = useRef(false)
 
   // Sube/baja el volumen suavemente.
   const fadeTo = (target, ms = 1600) => {
@@ -42,13 +40,11 @@ export default function MusicPlayer({ src = '/cancion.mp3', volume = 0.6 }) {
       a.volume = 0
       await a.play()
       startedRef.current = true
-      pendingRef.current = false
       setPlaying(true)
       fadeTo(volume)
       return true
     } catch {
-      // Sin gesto que lo habilite todavía: queda pendiente.
-      pendingRef.current = true
+      // Sin gesto que lo habilite todavía: reintenta en el próximo.
       return false
     }
   }
@@ -64,41 +60,18 @@ export default function MusicPlayer({ src = '/cancion.mp3', volume = 0.6 }) {
     }
   }
 
-  // Desbloqueo del audio en el primer gesto (en silencio, sin sonar).
-  // Incluye scroll/wheel para que abrir el sobre deslizando lo habilite.
+  // La música arranca en la primera interacción real del usuario.
   useEffect(() => {
-    const events = ['pointerdown', 'touchstart', 'keydown', 'click', 'wheel', 'scroll']
+    const events = ['pointerdown', 'touchstart', 'keydown', 'click']
     const cleanup = () =>
-      events.forEach((e) => window.removeEventListener(e, unlock))
-    const unlock = async () => {
-      if (unlockedRef.current) return
-      const a = audioRef.current
-      if (!a) return
-      try {
-        a.volume = 0
-        await a.play()
-        a.pause()
-        a.currentTime = 0
-        unlockedRef.current = true
-        cleanup()
-        // Si el sobre ya se había abierto, arrancá ahora.
-        if (pendingRef.current && !startedRef.current) startPlayback()
-      } catch {
-        // Reintenta en el próximo gesto.
-      }
-    }
-    events.forEach((e) => window.addEventListener(e, unlock, { passive: true }))
-    return cleanup
-  }, [])
-
-  // La música arranca cuando el sobre se abre.
-  useEffect(() => {
-    const onOpen = () => {
+      events.forEach((e) => window.removeEventListener(e, tryStart))
+    const tryStart = async () => {
       if (startedRef.current) return
-      startPlayback()
+      const ok = await startPlayback()
+      if (ok) cleanup()
     }
-    window.addEventListener('wedding:open', onOpen)
-    return () => window.removeEventListener('wedding:open', onOpen)
+    events.forEach((e) => window.addEventListener(e, tryStart, { passive: true }))
+    return cleanup
   }, [])
 
   return (

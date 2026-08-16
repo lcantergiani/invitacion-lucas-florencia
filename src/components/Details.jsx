@@ -1,6 +1,7 @@
 import { motion } from 'motion/react'
 import { wedding } from '../data/wedding'
 import { fadeUp, viewportReveal } from '../lib/motion'
+import { paperStyle } from '../lib/paper'
 import SectionTitle from './SectionTitle'
 
 // Íconos inline (SVG) para no depender de librerías externas.
@@ -32,7 +33,7 @@ function DressIcon() {
 }
 
 export default function Details() {
-  const { venues, dressCode, dateLabel } = wedding
+  const { venues, dressCode } = wedding
 
   const cards = [
     {
@@ -55,7 +56,7 @@ export default function Details() {
   return (
     <section id="detalles" className="section-pad bg-sand/40">
       <motion.div {...viewportReveal} className="mx-auto max-w-5xl">
-        <SectionTitle eyebrow={dateLabel} title="Detalles del evento" />
+        <SectionTitle title="Detalles del evento" />
 
         <div className="grid gap-6 md:grid-cols-3">
           {cards.map((c) => (
@@ -64,6 +65,7 @@ export default function Details() {
               variants={fadeUp}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              style={paperStyle}
               className="flex flex-col items-center rounded-2xl bg-ivory/80 px-8 py-12 text-center shadow-[0_1px_30px_-15px_rgba(43,41,37,0.25)]"
             >
               <span className="text-accent">{c.icon}</span>

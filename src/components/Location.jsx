@@ -11,21 +11,33 @@ export default function Location() {
       <motion.div {...viewportReveal} className="mx-auto max-w-4xl">
         <SectionTitle eyebrow="Cómo llegar" title="El lugar" />
 
-        <motion.a
-          variants={fadeUp}
-          href={map.directionsUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="group block overflow-hidden rounded-2xl border border-sand shadow-[0_1px_40px_-20px_rgba(43,41,37,0.4)]"
-        >
-          <img
-            src={map.photoSrc}
-            alt={map.photoAlt}
-            loading="lazy"
-            referrerPolicy="no-referrer"
-            className="h-72 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-96"
-          />
-        </motion.a>
+        <motion.div variants={fadeUp} className="grid gap-4 sm:grid-cols-2">
+          {/* Foto real de la capilla */}
+          <div className="group overflow-hidden rounded-2xl border border-sand shadow-[0_1px_40px_-20px_rgba(43,41,37,0.4)]">
+            <img
+              src={`${import.meta.env.BASE_URL}capilla-lugar.jpg`}
+              alt="Capilla — ceremonia"
+              loading="lazy"
+              className="h-64 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-80"
+            />
+          </div>
+
+          {/* Foto de Casa Olivos (enlaza a las indicaciones) */}
+          <a
+            href={map.directionsUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="group block overflow-hidden rounded-2xl border border-sand shadow-[0_1px_40px_-20px_rgba(43,41,37,0.4)]"
+          >
+            <img
+              src={map.photoSrc}
+              alt={map.photoAlt}
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              className="h-64 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-80"
+            />
+          </a>
+        </motion.div>
 
         <motion.div
           variants={fadeUp}
