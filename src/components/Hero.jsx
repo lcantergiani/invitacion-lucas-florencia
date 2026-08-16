@@ -103,28 +103,28 @@ export default function Hero() {
 
         {/* Fecha (misma tipografía) */}
         <motion.div variants={item} className="mt-8">
-          <div className="inline-block tabular-nums lining-nums">
-            <p className="text-lg">{month}</p>
+          <div className="inline-block tabular-nums lining-nums text-sm sm:text-xl">
+            <p>{month}</p>
 
             <div className="mt-2 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
               <div className="flex flex-col items-center gap-1.5">
                 <span className="h-px w-12 bg-[#d8a7b0]" />
-                <span className="text-sm">{weekday}</span>
+                <span>{weekday}</span>
                 <span className="h-px w-12 bg-[#d8a7b0]" />
               </div>
 
-              <span className="flex items-center justify-center text-center text-4xl leading-none sm:text-5xl">
+              <span className="flex items-center justify-center text-center leading-none">
                 {day}
               </span>
 
               <div className="flex flex-col items-center gap-1.5">
                 <span className="h-px w-12 bg-[#d8a7b0]" />
-                <span className="text-sm">{year}</span>
+                <span>{year}</span>
                 <span className="h-px w-12 bg-[#d8a7b0]" />
               </div>
             </div>
 
-            <p className="mt-2 text-sm">{time}</p>
+            <p className="mt-2">{time}</p>
           </div>
         </motion.div>
 
@@ -135,7 +135,7 @@ export default function Hero() {
           whileHover={{ y: -3 }}
           whileTap={{ scale: 0.97 }}
           transition={{ duration: 0.3, ease }}
-          className="mt-10 rounded-full border border-ink/20 px-8 py-3 text-xs tracking-[0.2em] transition-colors hover:border-accent hover:text-accent"
+          className="mt-10 rounded-full border border-ink/20 px-8 py-3 text-sm tracking-[0.15em] transition-colors hover:border-accent hover:text-accent sm:text-xl"
         >
           Confirmar asistencia
         </motion.a>
