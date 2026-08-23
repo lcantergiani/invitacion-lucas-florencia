@@ -51,7 +51,7 @@ export default function Hero() {
           {/* Padres (arriba) */}
           <motion.div
             variants={item}
-            className="flex w-full items-start justify-between gap-2 text-[0.6rem] leading-relaxed tracking-normal sm:gap-6 sm:text-lg sm:tracking-[0.08em]"
+            className="flex w-full items-start justify-between gap-2 text-[0.6rem] leading-tight tracking-normal sm:gap-6 sm:text-lg sm:tracking-[0.08em]"
           >
             <div className="space-y-1 text-left">
               {wedding.parents.groom.map((name) => (
@@ -78,7 +78,7 @@ export default function Hero() {
               <span>{wedding.couple.bride}</span>
             </h1>
 
-            <p className="mt-8 max-w-3xl text-xs leading-relaxed lining-nums tabular-nums sm:mt-24 sm:text-xl">
+            <p className="mt-8 max-w-3xl text-[0.6rem] leading-relaxed tracking-normal lining-nums tabular-nums sm:mt-24 sm:text-lg">
               Te invitamos a celebrar nuestro matrimonio con una ceremonia
               religiosa en Casa Olivos de Chacabuco, Colina el día sábado 14 de
               noviembre a las 17:00 horas.
@@ -88,7 +88,7 @@ export default function Hero() {
           {/* Pie: recepción/ubicación · lista de novios · confirmar (centrado) */}
           <motion.div
             variants={item}
-            className="w-full text-[0.62rem] leading-relaxed tracking-[0.06em] sm:text-base sm:tracking-[0.08em]"
+            className="w-full text-[0.6rem] leading-tight tracking-normal sm:text-lg sm:tracking-[0.08em]"
           >
             <div className="flex w-full items-end justify-between gap-3 sm:gap-6">
               <div className="space-y-1 text-left">
