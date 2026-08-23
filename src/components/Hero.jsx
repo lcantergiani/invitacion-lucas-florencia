@@ -14,24 +14,10 @@ const item = {
 }
 
 export default function Hero() {
-  // Partes de la fecha para el bloque tipo calendario.
-  const d = wedding.date
-  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1)
-  const weekday = cap(d.toLocaleDateString('es-ES', { weekday: 'long' }))
-  const month = cap(d.toLocaleDateString('es-ES', { month: 'long' }))
-  const day = d.getDate()
-  const year = d.getFullYear()
-  const time =
-    d.toLocaleTimeString('es-ES', {
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: false,
-    }) + ' horas'
-
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 py-12 text-center sm:py-16"
+      className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 py-[50px] text-center"
     >
       {/* Fondo beige claro (igual que la segunda página) */}
       <div className="pointer-events-none absolute inset-0 -z-10 bg-sand/40" />
@@ -43,118 +29,107 @@ export default function Hero() {
         transition={{ duration: 1.6, ease }}
       />
 
-      <div className="relative mx-auto w-full max-w-3xl overflow-hidden rounded-[1.25rem] bg-ivory px-6 py-14 shadow-[0_25px_70px_-30px_rgba(43,41,37,0.45)] ring-1 ring-ink/5 sm:px-14">
+      <div className="relative mx-auto flex min-h-[calc(100svh_-_100px)] w-full max-w-4xl flex-col overflow-hidden rounded-[1.25rem] bg-ivory px-5 py-10 shadow-[0_25px_70px_-30px_rgba(43,41,37,0.45)] ring-1 ring-ink/5 sm:px-16 sm:py-16">
         {/* Textura de papel (imagen) */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 z-0 bg-cover bg-center"
           style={{ backgroundImage: `url("${import.meta.env.BASE_URL}textura2.png")` }}
         />
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 flex w-full flex-col items-center text-center font-serif font-light uppercase tracking-[0.12em] text-ink"
-      >
-        {/* Padres en las esquinas superiores */}
+        {/* Marco interno */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-3 z-0 border border-ink/15 sm:inset-8"
+        />
+
         <motion.div
-          variants={item}
-          className="flex w-full items-start justify-between gap-6 text-[0.6rem] leading-relaxed tracking-[0.08em] sm:text-xs"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="relative z-10 flex w-full flex-1 flex-col justify-between text-center font-serif uppercase tracking-[0.12em] text-ink"
         >
-          <div className="space-y-1 text-left">
-            {wedding.parents.groom.map((name) => (
-              <p key={name}>{name}</p>
-            ))}
-          </div>
-          <div className="space-y-1 text-right">
-            {wedding.parents.bride.map((name) => (
-              <p key={name}>{name}</p>
-            ))}
-          </div>
-        </motion.div>
+          {/* Padres (arriba) */}
+          <motion.div
+            variants={item}
+            className="flex w-full items-start justify-between gap-3 text-[0.62rem] leading-relaxed tracking-[0.06em] sm:gap-6 sm:text-lg sm:tracking-[0.08em]"
+          >
+            <div className="space-y-1 text-left">
+              {wedding.parents.groom.map((name) => (
+                <p key={name}>{name}</p>
+              ))}
+            </div>
+            <div className="space-y-1 text-right">
+              {wedding.parents.bride.map((name) => (
+                <p key={name}>{name}</p>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* Capilla (un poco más abajo) */}
-        <motion.div variants={item} className="mt-12 sm:mt-14">
-          <img
-            src={`${import.meta.env.BASE_URL}capilla2.png`}
-            alt="Capilla"
-            className="mx-auto w-44 sm:w-56"
-          />
-        </motion.div>
+          {/* Centro: capilla + nombres + invitación */}
+          <motion.div variants={item} className="flex flex-col items-center">
+            <img
+              src={`${import.meta.env.BASE_URL}capilla2.png`}
+              alt="Capilla"
+              className="mx-auto w-40 sm:w-56"
+            />
 
-        {/* Nombres de los novios */}
-        <motion.h1
-          variants={item}
-          className="mt-5 flex flex-col items-center gap-1 text-sm leading-tight sm:text-xl"
-        >
-          <span>{wedding.couple.groom}</span>
-          <span>{wedding.couple.bride}</span>
-        </motion.h1>
+            <h1 className="mt-6 flex flex-col items-center gap-1 text-base leading-tight sm:mt-10 sm:text-2xl">
+              <span>{wedding.couple.groom}</span>
+              <span>{wedding.couple.bride}</span>
+            </h1>
 
-        {/* Texto de invitación */}
-        <motion.p
-          variants={item}
-          className="mt-8 max-w-xl text-[0.6rem] leading-relaxed text-stone sm:text-xs"
-        >
-          Te invitamos a celebrar nuestro matrimonio con una ceremonia religiosa
-          en Casa Olivos de Chacabuco, Colina y a una recepción en el mismo
-          lugar.
-        </motion.p>
+            <p className="mt-8 max-w-3xl text-xs leading-relaxed lining-nums tabular-nums sm:mt-24 sm:text-xl">
+              Te invitamos a celebrar nuestro matrimonio con una ceremonia
+              religiosa en Casa Olivos de Chacabuco, Colina el día sábado 14 de
+              noviembre a las 17:00 horas.
+            </p>
+          </motion.div>
 
-        {/* Fecha (misma tipografía) */}
-        <motion.div variants={item} className="mt-8">
-          <div className="inline-block tabular-nums lining-nums text-sm sm:text-xl">
-            <p>{month}</p>
-
-            <div className="mt-2 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="h-px w-12 bg-[#d8a7b0]" />
-                <span>{weekday}</span>
-                <span className="h-px w-12 bg-[#d8a7b0]" />
+          {/* Pie: recepción/ubicación · lista de novios · confirmar (centrado) */}
+          <motion.div
+            variants={item}
+            className="w-full text-[0.62rem] leading-relaxed tracking-[0.06em] sm:text-base sm:tracking-[0.08em]"
+          >
+            <div className="flex w-full items-end justify-between gap-3 sm:gap-6">
+              <div className="space-y-1 text-left">
+                <p>Y a una recepción</p>
+                <p>en el mismo lugar</p>
+                <a
+                  href={wedding.map.directionsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline-offset-2 transition-colors hover:text-accent hover:underline"
+                >
+                  (Ver ubicación)
+                </a>
               </div>
 
-              <span className="flex items-center justify-center text-center leading-none">
-                {day}
-              </span>
-
-              <div className="flex flex-col items-center gap-1.5">
-                <span className="h-px w-12 bg-[#d8a7b0]" />
-                <span>{year}</span>
-                <span className="h-px w-12 bg-[#d8a7b0]" />
+              <div className="flex flex-col items-end space-y-1 text-right">
+                <p>Novios Paris</p>
+                <p className="lining-nums tabular-nums">({wedding.registryCode})</p>
+                <a
+                  href={wedding.registryUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline-offset-2 transition-colors hover:text-accent hover:underline"
+                >
+                  Ver lista
+                </a>
               </div>
             </div>
 
-            <p className="mt-2">{time}</p>
-          </div>
+            <div className="mt-6 text-center">
+              <a
+                href="#rsvp"
+                className="underline-offset-2 transition-colors hover:text-accent hover:underline"
+              >
+                Confirma aquí
+              </a>
+            </div>
+          </motion.div>
         </motion.div>
-
-        {/* Botón */}
-        <motion.a
-          variants={item}
-          href="#rsvp"
-          whileHover={{ y: -3 }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ duration: 0.3, ease }}
-          className="mt-10 rounded-full border border-ink/20 px-8 py-3 text-sm tracking-[0.15em] transition-colors hover:border-accent hover:text-accent sm:text-xl"
-        >
-          Confirmar asistencia
-        </motion.a>
-      </motion.div>
       </div>
 
-      {/* Indicador de scroll */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.4, duration: 1 }}
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="h-10 w-px bg-gradient-to-b from-accent/50 to-transparent"
-        />
-      </motion.div>
     </section>
   )
 }

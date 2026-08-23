@@ -5,7 +5,7 @@ import SectionTitle from './SectionTitle'
 
 const ease = [0.22, 1, 0.36, 1]
 
-const REGISTRY_URL = 'https://www.noviosparis.cl/home'
+const REGISTRY_URL = 'https://www.noviosparis.cl/search-couple'
 const REGISTRY_CODE = '6971016'
 
 function GiftIcon() {
