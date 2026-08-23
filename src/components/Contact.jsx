@@ -5,7 +5,7 @@ import SectionTitle from './SectionTitle'
 const ease = [0.22, 1, 0.36, 1]
 
 // Número de WhatsApp en formato internacional sin signos ni espacios.
-const WHATSAPP_NUMBER = '56962076590'
+const WHATSAPP_NUMBER = '56996996421'
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}`
 
 function WhatsAppIcon() {
@@ -40,7 +40,7 @@ export default function Contact() {
           variants={fadeUp}
           className="mt-5 font-sans text-sm font-light text-stone"
         >
-          +56 9 6207 6590
+          +56 9 9699 6421
         </motion.p>
       </motion.div>
     </section>
