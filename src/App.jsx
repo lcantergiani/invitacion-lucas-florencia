@@ -10,11 +10,11 @@ export default function App() {
   return (
     <main className="overflow-x-clip">
       <Hero />
-      <Countdown />
       <Location />
       <Registry />
       <RSVP />
       <Contact />
+      <Countdown />
       <Footer />
     </main>
   )
