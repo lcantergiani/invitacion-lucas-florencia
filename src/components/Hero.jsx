@@ -91,7 +91,7 @@ export default function Hero() {
             className="w-full text-[0.6rem] leading-tight tracking-normal sm:mt-12 sm:text-lg"
           >
             <div className="flex w-full items-end justify-between gap-3 sm:gap-6">
-              <div className="flex flex-col items-start space-y-0 text-left">
+              <div className="flex flex-col items-start space-y-1 text-left sm:space-y-0">
                 <p>Y a una recepción</p>
                 <p>en el mismo lugar</p>
                 <a
@@ -104,7 +104,7 @@ export default function Hero() {
                 </a>
               </div>
 
-              <div className="flex flex-col items-end space-y-0 text-right">
+              <div className="flex flex-col items-end space-y-1 text-right sm:space-y-0">
                 <p>Novios Paris</p>
                 <p className="lining-nums tabular-nums">({wedding.registryCode})</p>
                 <a
