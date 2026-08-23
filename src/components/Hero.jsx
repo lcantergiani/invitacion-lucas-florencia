@@ -51,14 +51,14 @@ export default function Hero() {
           {/* Padres (arriba) */}
           <motion.div
             variants={item}
-            className="flex w-full items-start justify-between gap-3 text-[0.62rem] leading-relaxed tracking-[0.06em] sm:gap-6 sm:text-lg sm:tracking-[0.08em]"
+            className="flex w-full flex-col items-center gap-4 text-[0.68rem] leading-relaxed tracking-[0.08em] sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:text-lg"
           >
-            <div className="space-y-1 text-left">
+            <div className="space-y-1 text-center sm:text-left">
               {wedding.parents.groom.map((name) => (
                 <p key={name}>{name}</p>
               ))}
             </div>
-            <div className="space-y-1 text-right">
+            <div className="space-y-1 text-center sm:text-right">
               {wedding.parents.bride.map((name) => (
                 <p key={name}>{name}</p>
               ))}
