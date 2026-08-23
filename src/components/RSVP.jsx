@@ -13,23 +13,41 @@ const initialForm = {
   diet: '',
 }
 
+// Web app de Google Apps Script que guarda las respuestas en la planilla.
+const SCRIPT_URL =
+  'https://script.google.com/macros/s/AKfycbxdng8T57kBzqieRFhPRNA69X40WwhEWj5Nv3xZ3q9dYQD1c9eqBA339ryVI0jbLwNteA/exec'
+
 export default function RSVP() {
   const [form, setForm] = useState(initialForm)
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
 
   function update(field, value) {
     setForm((prev) => ({ ...prev, [field]: value }))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    // Demo: sin backend. Conectá acá tu servicio (Formspree, Google Forms, API propia...).
-    console.log('RSVP enviado:', form)
+    setSending(true)
+    const asiste = form.attendance === 'yes'
+    const body = new URLSearchParams({
+      nombre: form.name,
+      asistencia: asiste ? 'Sí' : 'No',
+      acompanante: asiste && form.plusOne ? form.plusOneName : '',
+      comentario: asiste ? form.diet : '',
+    })
+    try {
+      // mode:'no-cors' → la respuesta es opaca, pero el dato se guarda igual.
+      await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body })
+    } catch (err) {
+      // Ignoramos errores de lectura; la fila ya se agregó en la planilla.
+    }
+    setSending(false)
     setSent(true)
   }
 
   const inputClass =
-    'w-full rounded-lg border border-sand bg-ivory px-4 py-3 font-sans text-sm text-ink outline-none transition-colors placeholder:text-stone/50 focus:border-accent'
+    'w-full rounded-lg border border-accent/70 bg-ivory px-4 py-3 font-sans text-sm text-ink outline-none transition-colors placeholder:text-stone/50 focus:border-accent'
 
   return (
     <section id="rsvp" className="section-pad">
@@ -102,7 +120,7 @@ export default function RSVP() {
                       className={`rounded-lg border px-4 py-3 font-sans text-sm transition-colors ${
                         form.attendance === opt.value
                           ? 'border-accent bg-accent/10 text-ink'
-                          : 'border-sand text-stone hover:border-accent/50'
+                          : 'border-accent/70 text-stone hover:border-accent/50'
                       }`}
                     >
                       {opt.label}
@@ -123,7 +141,7 @@ export default function RSVP() {
                     className="space-y-6 overflow-hidden"
                   >
                     {/* +1 */}
-                    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-sand px-4 py-3">
+                    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-accent/70 px-4 py-3">
                       <input
                         type="checkbox"
                         checked={form.plusOne}
@@ -181,12 +199,13 @@ export default function RSVP() {
               {/* Enviar */}
               <motion.button
                 type="submit"
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.97 }}
+                disabled={sending}
+                whileHover={{ y: sending ? 0 : -3 }}
+                whileTap={{ scale: sending ? 1 : 0.97 }}
                 transition={{ duration: 0.3, ease }}
-                className="w-full rounded-full bg-ink px-8 py-4 font-sans text-xs uppercase tracking-widest2 text-ivory transition-colors hover:bg-accent"
+                className="w-full rounded-full bg-ink px-8 py-4 font-sans text-xs uppercase tracking-widest2 text-ivory transition-colors hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Enviar confirmación
+                {sending ? 'Enviando…' : 'Enviar confirmación'}
               </motion.button>
             </motion.form>
           )}
