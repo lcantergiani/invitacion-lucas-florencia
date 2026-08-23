@@ -78,7 +78,7 @@ export default function Hero() {
               <span>{wedding.couple.bride}</span>
             </h1>
 
-            <p className="mt-8 max-w-3xl text-[0.6rem] leading-relaxed tracking-normal lining-nums tabular-nums sm:mt-24 sm:text-lg">
+            <p className="mt-8 max-w-3xl text-[0.6rem] leading-relaxed tracking-normal lining-nums tabular-nums sm:mt-14 sm:text-lg">
               Te invitamos a celebrar nuestro matrimonio con una ceremonia
               religiosa en Casa Olivos de Chacabuco, Colina el día sábado 14 de
               noviembre a las 17:00 horas.
