@@ -91,7 +91,7 @@ export default function Hero() {
             className="w-full text-[0.6rem] leading-tight tracking-normal sm:text-lg sm:tracking-[0.08em]"
           >
             <div className="flex w-full items-end justify-between gap-3 sm:gap-6">
-              <div className="space-y-1 text-left">
+              <div className="flex flex-col items-start space-y-1 text-left">
                 <p>Y a una recepción</p>
                 <p>en el mismo lugar</p>
                 <a
