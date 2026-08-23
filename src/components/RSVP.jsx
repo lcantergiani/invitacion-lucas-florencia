@@ -11,6 +11,7 @@ const initialForm = {
   plusOne: false,
   plusOneName: '',
   diet: '',
+  song: '',
 }
 
 // Web app de Google Apps Script que guarda las respuestas en la planilla.
@@ -35,6 +36,7 @@ export default function RSVP() {
       asistencia: asiste ? 'Sí' : 'No',
       acompanante: asiste && form.plusOne ? form.plusOneName : '',
       comentario: asiste ? form.diet : '',
+      cancion: asiste ? form.song : '',
     })
     try {
       // mode:'no-cors' → la respuesta es opaca, pero el dato se guarda igual.
@@ -190,6 +192,20 @@ export default function RSVP() {
                         onChange={(e) => update('diet', e.target.value)}
                         placeholder="Vegetariano, celíaco, alergias… (opcional)"
                         className={`${inputClass} resize-none`}
+                      />
+                    </div>
+
+                    {/* Canción que no puede faltar */}
+                    <div>
+                      <label className="mb-2 block font-sans text-xs uppercase tracking-widest2 text-stone">
+                        Canción que no puede faltar
+                      </label>
+                      <input
+                        type="text"
+                        value={form.song}
+                        onChange={(e) => update('song', e.target.value)}
+                        placeholder="Ese tema que no puede faltar 🎶"
+                        className={inputClass}
                       />
                     </div>
                   </motion.div>
