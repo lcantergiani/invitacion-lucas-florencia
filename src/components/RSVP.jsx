@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
-import { fadeUp, viewportReveal } from '../lib/motion'
+import { viewportReveal } from '../lib/motion'
 import SectionTitle from './SectionTitle'
 
 const ease = [0.22, 1, 0.36, 1]
@@ -62,7 +62,8 @@ export default function RSVP() {
               key="thanks"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5, ease }}
               className="rounded-2xl bg-sand/50 px-8 py-14 text-center"
             >
               <p className="font-serif text-3xl font-light text-ink">
@@ -86,7 +87,10 @@ export default function RSVP() {
           ) : (
             <motion.form
               key="form"
-              variants={fadeUp}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5, ease }}
               onSubmit={handleSubmit}
               className="space-y-6"
             >
