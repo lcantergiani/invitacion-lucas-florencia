@@ -18,7 +18,7 @@ function WhatsAppIcon() {
 
 export default function Contact() {
   return (
-    <section id="contacto" className="section-pad">
+    <section id="contacto" className="section-pad bg-sand/40">
       <motion.div {...viewportReveal} className="mx-auto max-w-xl text-center">
         <SectionTitle eyebrow="¿Dudas?" title="Contáctanos" />
 

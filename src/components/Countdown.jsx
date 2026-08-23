@@ -29,7 +29,7 @@ export default function Countdown() {
   ]
 
   return (
-    <section id="cuenta-regresiva" className="section-pad bg-sand/40">
+    <section id="cuenta-regresiva" className="section-pad">
       <motion.div
         {...viewportReveal}
         className="mx-auto max-w-3xl text-center"
