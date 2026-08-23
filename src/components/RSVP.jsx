@@ -208,7 +208,7 @@ export default function RSVP() {
                         type="text"
                         value={form.song}
                         onChange={(e) => update('song', e.target.value)}
-                        placeholder="Ese tema que no puede faltar 🎶"
+                        placeholder="Ese tema que no puede faltar (opcional) 🎶"
                         className={inputClass}
                       />
                     </div>
