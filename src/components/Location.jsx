@@ -30,10 +30,9 @@ export default function Location() {
             className="group block overflow-hidden rounded-2xl border border-sand shadow-[0_1px_40px_-20px_rgba(43,41,37,0.4)]"
           >
             <img
-              src={map.photoSrc}
+              src={`${import.meta.env.BASE_URL}casa-olivos.jpg`}
               alt={map.photoAlt}
               loading="lazy"
-              referrerPolicy="no-referrer"
               className="h-64 w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 sm:h-80"
             />
           </a>
